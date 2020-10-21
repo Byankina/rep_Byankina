@@ -37,7 +37,7 @@ truba create_truba() {                  //Создание нового объекта в структуре
 	cout << "id=" << endl;
 	new_truba.id = check_int(1000);
 	cout << "diametr=" << endl;
-	new_truba.d = check_int(1000);
+	new_truba.d = check_int(2000);
 	cout << "dlina=" << endl;
 	new_truba.l = check_int(1000);
 	new_truba.remont = false;
@@ -50,7 +50,7 @@ ks create_ks() {     //Создание нового объекта в структуре КС
 	cout << "id=" << endl;
 	new_ks.id = check_int(1000);
 	cout << "kol ceh=" << endl;
-	new_ks.kol_ceh = check_int(1000);
+	new_ks.kol_ceh = check_int(10);
 	cout << "kol ceh inwork=" << endl;
 	new_ks.kol_ceh_inwork = check_int(new_ks.kol_ceh);
 	cout << "effect=" << endl;
