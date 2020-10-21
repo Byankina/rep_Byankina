@@ -5,7 +5,7 @@ using namespace std;
 
 struct truba {     //Создаем структуру труба со свойствами (как в примере задания)
 	int id;
-	double l;
+	int l;
 	int d;
 	bool remont;
 };
@@ -15,10 +15,10 @@ struct ks {        //Создаем структуру КС со свойствами (как в примере задания)
 	string Name;
 	int kol_ceh;
 	int kol_ceh_inwork;
-	double effect;
+	int effect;
 };
 
-int get_int(int a) {
+int check_int(int a) {             //функция проверки значения
 	int i;
 	cin >> i;
 	while (i > a || i < 0 || cin.fail()) {
@@ -31,27 +31,15 @@ int get_int(int a) {
 	return i;
 }
 
-double get_double(double a) {
-	double i;
-	cin >> i;
-	while (i > a || i < 0 || cin.fail()) {
-		cout << "povtor " << endl;
-		cin.clear();
-		cin.ignore(10000, '\n');
-		cin >> i;
-	}
-	cin.ignore(10000, '\n');
-	return i;
-}
 
 truba create_truba() {                  //Создание нового объекта в структуре
 	truba new_truba;
 	cout << "id=" << endl;
-	new_truba.id = get_int(1000);
+	new_truba.id = check_int(1000);
 	cout << "diametr=" << endl;
-	new_truba.d = get_int(1000);
+	new_truba.d = check_int(1000);
 	cout << "dlina=" << endl;
-	new_truba.l = get_int(1000);
+	new_truba.l = check_int(1000);
 	new_truba.remont = false;
 	return new_truba;
 }
@@ -60,13 +48,13 @@ ks create_ks() {     //Создание нового объекта в структуре КС
 	cout << "Name: " << endl;
 	cin >> new_ks.Name;
 	cout << "id=" << endl;
-	new_ks.id = get_int(1000);
+	new_ks.id = check_int(1000);
 	cout << "kol ceh=" << endl;
-	new_ks.kol_ceh = get_int(1000);
+	new_ks.kol_ceh = check_int(1000);
 	cout << "kol ceh inwork=" << endl;
-	new_ks.kol_ceh_inwork = get_int(new_ks.kol_ceh);
+	new_ks.kol_ceh_inwork = check_int(new_ks.kol_ceh);
 	cout << "effect=" << endl;
-	new_ks.effect = get_int(1000);
+	new_ks.effect = check_int(1000);
 	return new_ks;
 }
 
