@@ -5,8 +5,8 @@ using namespace std;
 
 struct truba {     //Создаем структуру труба со свойствами (как в примере задания)
 	int id;
-	int l;
-	int d;
+	double l;
+	double d;
 	bool remont;
 };
 
@@ -15,31 +15,44 @@ struct ks {        //Создаем структуру КС со свойствами (как в примере задания)
 	string Name;
 	int kol_ceh;
 	int kol_ceh_inwork;
-	int effect;
+	double effect;
 };
 
-int check_int(int a) {             //функция проверки значения
-	int i;
-	cin >> i;
-	while (i > a || i < 0 || cin.fail()) {
-		cout << "povtor " << endl;
+//int check_int(int a) {             //функция проверки значения
+//	int i;
+//	cin >> i;
+//	while (i > a || i < 0 || cin.fail()) {
+//		cout << "povtor " << endl;
+//		cin.clear();
+//		cin.ignore(10000, '\n');
+//		cin >> i;
+//	}
+//	//cin.ignore(10000, '\n');
+//	return i;
+//}
+
+template <typename T>
+T GetCorrectNumber(T max)
+{
+	T x;
+	while ((cin >> x).fail() || x < 0 || x>max)
+	{
 		cin.clear();
 		cin.ignore(10000, '\n');
-		cin >> i;
+		cout << "Type number (" << 0 << "-" << max << "):";
 	}
-	cin.ignore(10000, '\n');
-	return i;
+	return x;
 }
 
 
 truba create_truba() {                  //Создание нового объекта в структуре
 	truba new_truba;
 	cout << "id=" << endl;
-	new_truba.id = check_int(1000);
+	new_truba.id = GetCorrectNumber(1000);
 	cout << "diametr=" << endl;
-	new_truba.d = check_int(2000);
+	new_truba.d = GetCorrectNumber(2000);
 	cout << "dlina=" << endl;
-	new_truba.l = check_int(1000);
+	new_truba.l = GetCorrectNumber(1000);
 	new_truba.remont = false;
 	return new_truba;
 }
@@ -48,13 +61,13 @@ ks create_ks() {     //Создание нового объекта в структуре КС
 	cout << "Name: " << endl;
 	cin >> new_ks.Name;
 	cout << "id=" << endl;
-	new_ks.id = check_int(1000);
+	new_ks.id = GetCorrectNumber(1000);
 	cout << "kol ceh=" << endl;
-	new_ks.kol_ceh = check_int(10);
+	new_ks.kol_ceh = GetCorrectNumber(10);
 	cout << "kol ceh inwork=" << endl;
-	new_ks.kol_ceh_inwork = check_int(new_ks.kol_ceh);
+	new_ks.kol_ceh_inwork = GetCorrectNumber(new_ks.kol_ceh);
 	cout << "effect=" << endl;
-	new_ks.effect = check_int(1000);
+	new_ks.effect = GetCorrectNumber(1000);
 	return new_ks;
 }
 
@@ -77,7 +90,7 @@ void change_status(bool& status) {    //Изменить статус трубы
 
 void change_kol(ks& name) {       //
 	cout << "Kol-vo cehov inwork= " << endl;
-	cin >> name.kol_ceh_inwork;
+	name.kol_ceh_inwork = GetCorrectNumber(name.kol_ceh);
 }
 
 
@@ -127,7 +140,7 @@ int main()
 	while (1) {
 		cout << "Select action:" << endl;
 		PrintMenu();
-		cin >> i;
+		i = GetCorrectNumber(7);
 			switch (i)
 			{
 			case 1:
